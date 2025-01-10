@@ -1,34 +1,78 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+import "@assets/css/side-menu.css";
+import LogoPic from "@assets/img/logo.svg";
+import StakePic from "@assets/img/dollar-coin-stack.svg";
+import MarketPic from "@assets/img/shop.svg";
+import DashPic from "@assets/img/dashboard.svg";
+import CachePic from "@assets/img/globe.svg";
+import TwiterPic from "@assets/img/twiter.svg";
+import NotebookPic from "@/assets/img/notebook.svg";
+import TelegramPic from "@/assets/img/telegram.svg";
 
 const menuItems = [
     {
         title: 'Stake',
-        imgURL: '/img/dollar-coin-stack.svg'
+        imgURL: StakePic,
+        alt: 'Stake Pic',
+        id: 0
     },
     {
         title: 'Marketplace',
-        imgURL: '/img/shop.svg'
+        imgURL: MarketPic,
+        alt: 'Marketplace Pic',
+        id: 1
     },
     {
         title: 'Dashboard',
-        imgURL: '/img/dashboard.svg'
+        imgURL: DashPic,
+        alt: 'Dashboard Pic',
+        id: 2
     },
     {
         title: 'Cache',
-        imgURL: '/img/globe.svg'
+        imgURL: CachePic,
+        alt: 'Cache Pic',
+        id: 3
+    }
+];
+
+const menuSocials = [
+    {
+        imgURL: TwiterPic,
+        alt: 'Twiter Pic',
+        width: 22,
+        height: 23
+    },
+    {
+        imgURL: NotebookPic,
+        alt: 'Note Pic',
+        width: 42.18,
+        height: 30.39
+    },
+    {
+        imgURL: TelegramPic,
+        alt: 'Telegram Pic',
+        width: 26.29,
+        height: 23
     }
 ];
 
 const SideMenu = () => {
-    const [isHovered, setIsHovered] = useState(0);
+    const [selectedId, setSelectedId] = useState(0);
+
+    const handleClick = (id) => {
+        console.log(id);
+        setSelectedId(id);
+    }
 
     return (
-        <div className="side-menu">
-            <div className="logo">
+        <div className="side-menu-container">
+            <div className="side-menu-logo-container">
                 <div className="logo-pic">
-                    <Image
-                        src="/img/logo.svg"
-                        alt="cache-log"
+                    <img
+                        src={LogoPic}
+                        alt="Cache Logo"
                         width={48.16}
                         height={55.37}
                     />
@@ -37,84 +81,32 @@ const SideMenu = () => {
                     Cache
                 </div>
             </div>
-            <div className="menu-items">
-                {/* <div className="menu-stake">
-                    <div className="menu-stake-pic">
-                        <Image
-                            src="/img/dollar-coin-stack.svg"
-                            alt="stake-pic"
-                            width={18}
-                            height={18}
-                        />
-                    </div>
-                    <div className="menu-stake-title">
-                        Stake
-                    </div>
-                </div>
-                <div className="menu-marketplace">
-                    <div className="menu-marketplace-pic">
-                        <Image
-                            src="/img/shop.svg"
-                            alt="stake-pic"
-                            width={18}
-                            height={18}
-                        />
-                    </div>
-                    <div className="menu-marketplace-title">
-                        Marketplace
-                    </div>
-                </div>
-                <div className="menu-marketplace">
-                    <div className="menu-marketplace-pic">
-                        <Image
-                            src="/img/dashboard.svg"
-                            alt="stake-pic"
-                            width={18}
-                            height={18}
-                        />
-                    </div>
-                    <div className="menu-marketplace-title">
-                        Dashboard
-                    </div>
-                </div>
-                <div className="menu-marketplace">
-                    <div className="menu-marketplace-pic">
-                        <Image
-                            src="/img/globe.svg"
-                            alt="stake-pic"
-                            width={18}
-                            height={18}
-                        />
-                    </div>
-                    <div className="menu-marketplace-title">
-                        CacheCompute
-                    </div>
-                </div> */}
+            <div className="side-menu-items-container">
                 {
                     menuItems.map((item, idx) => {
                         return (
                             <div
-                                className="menu-stake"
+                                key={idx}
+                                className={`item-stake-container ${selectedId === idx ? 'clicked' : ''}`}
+                                onClick={() => handleClick(idx)}
                             >
-                                <div className="menu-stake-item">
-                                    <div className="menu-stake-pic">
-                                        <Image
-                                            src={item.imgURL}
-                                            alt="stake-pic"
-                                            width={18}
-                                            height={18}
-                                        />
-                                    </div>
-                                    <div className="menu-stake-title">
-                                        {item.title}
-                                    </div>
+                                <div className="item-stake-pic">
+                                    <img
+                                        src={item.imgURL}
+                                        alt={item.alt}
+                                        width={18}
+                                        height={18}
+                                    />
+                                </div>
+                                <div className="item-stake-tile">
+                                    {item.title}
                                 </div>
                             </div>
                         );
                     })
                 }
             </div>
-            <div className="menu-price">
+            <div className="side-menu-price-container">
                 <div className="menu-price-title">
                     $Cache Price: .47
                 </div>
@@ -122,31 +114,24 @@ const SideMenu = () => {
                     +74%
                 </div>
             </div>
-            <div className="menu-socials">
-                <div className="menu-socials-twiter">
-                    <Image
-                        src="/img/twiter.svg"
-                        alt="stake-pic"
-                        width={22}
-                        height={23}
-                    />
-                </div>
-                <div className="menu-socials-notebook">
-                    <Image
-                        src="/img/notebook.svg"
-                        alt="stake-pic"
-                        width={42.18}
-                        height={30.39}
-                    />
-                </div>
-                <div className="menu-socials-telegram">
-                    <Image
-                        src="/img/telegram.svg"
-                        alt="stake-pic"
-                        width={26.29}
-                        height={23}
-                    />
-                </div>
+            <div className="side-menu-socials-container">
+                {
+                    menuSocials.map((social, idx) => {
+                        return (
+                            <div
+                                key={idx}
+                                className="social-twiter-container"
+                            >
+                                <img
+                                    src={social.imgURL}
+                                    alt={social.alt}
+                                    width={social.width}
+                                    height={social.height}
+                                />
+                            </div>
+                        );
+                    })
+                }
             </div>
         </div>
     );

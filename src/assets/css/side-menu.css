@@ -1,0 +1,57 @@
+@import "./global.css";
+
+.side-menu-container {
+    @apply bg-black pt-[32px] rounded-r-lg w-[245px] h-screen;
+}
+
+.side-menu-logo-container {
+    @apply flex items-center ml-[42px] w-[185.16px] h-[55.37px];
+}
+
+.logo-pic {
+    @apply mr-[9px] w-[48.16px];
+}
+
+.logo-title {
+    @apply text-[40px] text-white;
+}
+
+.side-menu-items-container {
+    @apply flex flex-col justify-between gap-[22px] mb-[13px] pt-[57.63px] pr-[32px];
+}
+
+.item-stake-container {
+    @apply flex items-center pl-[39px] w-[207px] h-[45px] cursor-pointer;
+}
+
+.item-stake-container:hover {
+    @apply bg-[url('@assets/img/rectangle.svg')]
+}
+
+.item-stake-container.clicked {
+    @apply flex items-center pl-[39px] w-[207px] h-[45px] bg-[url('@assets/img/rectangle.svg')];
+}
+
+.item-stake-pic {
+    @apply mr-[15px];
+}
+
+.item-stake-tile {
+    @apply font-semibold text-[20px] text-white;
+}
+
+.side-menu-price-container {
+    @apply flex items-center w-[191px] h-[38px] ml-[24px] mb-[380px] pl-[24px] border border-lime-border rounded-[10px]
+}
+
+.menu-price-title {
+    @apply mr-[10px] font-light text-[13px] text-white;
+}
+
+.menu-price-value {
+    @apply font-light text-[13px] text-lime-border
+}
+
+.side-menu-socials-container {
+    @apply flex items-center w-[155px] h-[48px] justify-between gap-[20px] ml-[42px]
+}

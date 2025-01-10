@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
     plugins: [react()],
@@ -18,7 +19,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": "/src",
-            "@assets": "src/assests",
+            "@assets": "/src/assets",
             "@components": "/src/components",
             "@pages": "/src/pages",
             "@store": "/src/store",
